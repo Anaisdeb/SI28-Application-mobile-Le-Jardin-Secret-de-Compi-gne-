@@ -1,0 +1,12 @@
+{
+  "name": "CompiegneInteractif",
+  "displayName": "CompiegneInteractif",
+  "expo": {
+    "name": "CompiegneInteractif",
+    "slug": "CompiegneInteractif",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
