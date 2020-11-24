@@ -47,7 +47,7 @@ export default function App() {
              justifyContent: 'center',
              marginTop: 0,
            }}>
-           <Text style={{ fontSize: 35, marginBottom: 20, color: 'white' }}> App pour SI28 </Text>
+           <Text style={{ fontSize: 35, marginBottom: 20, color: 'white' }}> App pour SI28 seconde edition </Text>
            <Text style={{ fontSize: 18, marginBottom: 20, color: 'white' }}> {text} </Text>
        </View>
         <View
