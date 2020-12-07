@@ -2,7 +2,6 @@
   "name": "CompiegneInteractif",
   "displayName": "CompiegneInteractif",
   "expo": {
-    //"entryPoint": "./App1.tsx",
     "name": "CompiegneInteractif",
     "slug": "CompiegneInteractif",
     "version": "1.0.0",

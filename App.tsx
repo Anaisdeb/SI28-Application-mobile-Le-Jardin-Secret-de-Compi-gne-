@@ -4,94 +4,17 @@ import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import IntroScreen1 from './IntroScreen1';
 import DetailsScreen from './Test';
 
 const Stack = createStackNavigator();
-
-function HomeScreen({navigation}) {
-  const [hasPermission, setHasPermission] = useState(null);
-  const [type, setType] = useState(Camera.Constants.Type.back);
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-
-      let { statusLoc } = await Location.requestPermissionsAsync();
-      if (statusLoc !== 'granted') {
-        setErrorMsg('Pas de permission pour la géolocalisation');
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-
-  let text = 'En attente de la localisation..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
-
-  return (
-    <View style={{ flex: 1 }}>
-      <Camera style={{ flex: 1 }} type={type}>
-      <View style={{
-             flex: 1,
-             alignItems: 'center',
-             justifyContent: 'center',
-             marginTop: 0,
-           }}>
-           <Text style={{ fontSize: 35, marginBottom: 20, color: 'white' }}> App pour SI28 seconde edition </Text>
-           <Text style={{ fontSize: 18, marginBottom: 20, color: 'white' }}> {text} </Text>
-		   <Button
-			title="Aller à l'écran suivant"
-			onPress={() => navigation.navigate('Details')}
-		  />
-       </View>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'transparent',
-            flexDirection: 'row',
-          }}>
-
-          <TouchableOpacity
-            style={{
-              flex: 0.5,
-              alignSelf: 'flex-end',
-              alignItems: 'center',
-            }}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
-            <Text style={{ fontSize: 18, marginBottom: 20, color: 'white' }}> Changer de camera </Text>
-          </TouchableOpacity>
-        </View>
-      </Camera>
-    </View>
-  );
-}
 
 export default function App() {
  return (
     <NavigationContainer>
       <Stack.Navigator>
-		<Stack.Screen name="Home" component={HomeScreen} />
+		<Stack.Screen name="Introduction" component={IntroScreen1} />
 		<Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>

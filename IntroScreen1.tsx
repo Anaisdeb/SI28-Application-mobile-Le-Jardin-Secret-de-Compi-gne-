@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function App() {
+export default function App({navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   
@@ -45,11 +45,6 @@ export default function App() {
   } else if (location) {
     text = JSON.stringify(location);
   }
-  
-
-  _onPressContinuer=()=> {
-			  Alert.alert("Continuons !");
-		  }
   
 
   
@@ -112,7 +107,7 @@ export default function App() {
 
 						}}>
 						
-			  <Button onPress={this._onPressContinuer}
+			  <Button onPress={() => navigation.navigate('Details')}
 			  title="Continuer"
 			  color='black'
 			  >
