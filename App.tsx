@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import DetailsScreen from './Test';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+function HomeScreen({navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [location, setLocation] = useState(null);
@@ -49,6 +54,10 @@ export default function App() {
            }}>
            <Text style={{ fontSize: 35, marginBottom: 20, color: 'white' }}> App pour SI28 seconde edition </Text>
            <Text style={{ fontSize: 18, marginBottom: 20, color: 'white' }}> {text} </Text>
+		   <Button
+			title="Aller à l'écran suivant"
+			onPress={() => navigation.navigate('Details')}
+		  />
        </View>
         <View
           style={{
@@ -75,5 +84,16 @@ export default function App() {
         </View>
       </Camera>
     </View>
+  );
+}
+
+export default function App() {
+ return (
+    <NavigationContainer>
+      <Stack.Navigator>
+		<Stack.Screen name="Home" component={HomeScreen} />
+		<Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
