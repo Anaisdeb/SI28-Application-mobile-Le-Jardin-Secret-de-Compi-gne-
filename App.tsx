@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import IntroScreen1 from './IntroScreen1';
-import DetailsScreen from './Test';
+import IntroScreen2 from './IntroScreen2';
 
 const Stack = createStackNavigator();
 
@@ -15,7 +15,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
 		<Stack.Screen name="Introduction" component={IntroScreen1} />
-		<Stack.Screen name="Details" component={DetailsScreen} />
+		<Stack.Screen name="Nouvelle mission" component={IntroScreen2} />
       </Stack.Navigator>
     </NavigationContainer>
   );

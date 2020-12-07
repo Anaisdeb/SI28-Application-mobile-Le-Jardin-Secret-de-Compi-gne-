@@ -107,7 +107,7 @@ export default function App({navigation}) {
 
 						}}>
 						
-			  <Button onPress={() => navigation.navigate('Details')}
+			  <Button onPress={() => navigation.navigate('Nouvelle mission')}
 			  title="Continuer"
 			  color='black'
 			  >
