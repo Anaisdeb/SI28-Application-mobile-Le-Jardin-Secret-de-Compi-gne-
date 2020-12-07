@@ -49,44 +49,29 @@ export default function App({navigation}) {
 
   
   return (
-    <View style={{ flex: 2 }}>
+    <View style={{ flex: 1 }}>
       <Camera style={{ flex: 1 }} type={type}>
         <View
           style={{
-            flex: 1,
             backgroundColor: 'transparent',
             flexDirection: 'row',
+			height: '40%',
           }}>
-
-          <TouchableOpacity //En appuyant dessus, l'opacité de la vue enveloppée est réduite, ce qui l'assombrit.
-            style={{
-              flex: 0.5,
-              alignSelf: 'flex-end',
-              alignItems: 'center',
-            }}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
-            <Text style={{ fontSize: 18, marginBottom: 20, color: 'white' }}> Changer de camera </Text>
-          </TouchableOpacity>
         </View>
-      </Camera>
+      
 	  
 	  <View style={{
 		  flex:1,
 		  justifyContent: 'center',
-		  aligntItems: 'center'
+		  aligntItems: 'center',
+		  backgroundColor: 'white'
 	  }}>
 		  <View style={{
              flex: 1,
              alignItems: 'center',
 			 alignSelf: 'flex-end',
              justifyContent: 'center',
-             marginTop: 0,
+             marginTop: 20,
            }}>
 		   <View style={{ flexDirection: 'row'
 		   
@@ -115,6 +100,8 @@ export default function App({navigation}) {
 			
 		  </View>
 	  </View>	  
+	  </Camera>
     </View>
+	
   );
 }
