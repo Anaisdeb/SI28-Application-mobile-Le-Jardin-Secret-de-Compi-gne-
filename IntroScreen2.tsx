@@ -1,79 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { Camera } from 'expo-camera';
-import * as Location from 'expo-location';
+import React from "react";
+import { View, Text, StyleSheet, ImageBackground, Alert, TouchableOpacity } from "react-native";
+import { useFonts, ArimaMadurai_400Regular } from '@expo-google-fonts/arima-madurai';
 
-export default function App() {
-  const [hasPermission, setHasPermission] = useState(null);
-  const [type, setType] = useState(Camera.Constants.Type.back);
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-
-      let { statusLoc } = await Location.requestPermissionsAsync();
-      if (statusLoc !== 'granted') {
-        setErrorMsg('Pas de permission pour la géolocalisation');
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-
-  let text = 'En attente de la localisation..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
-
+export default function App({ navigation }) {
+	let [fontsLoaded] = useFonts({
+		ArimaMadurai_400Regular,
+  });
+  
   return (
-    <View style={{ flex: 1 }}>
-      <Camera style={{ flex: 1 }} type={type}>
-      <View style={{
-             flex: 1,
-             alignItems: 'center',
-             justifyContent: 'center',
-             marginTop: 0,
-           }}>
-           <Text style={{ fontSize: 35, marginBottom: 20, color: 'white' }}> App pour SI28 seconde edition </Text>
-           <Text style={{ fontSize: 18, marginBottom: 20, color: 'white' }}> {text} </Text>
-       </View>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'transparent',
-            flexDirection: 'row',
-          }}>
-
-          <TouchableOpacity
-            style={{
-              flex: 0.5,
-              alignSelf: 'flex-end',
-              alignItems: 'center',
-            }}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
-            <Text style={{ fontSize: 18, marginBottom: 20, color: 'white' }}> Changer de camera </Text>
-          </TouchableOpacity>
-        </View>
-      </Camera>
+  
+    <View style={styles.container}>
+		<ImageBackground
+				  source={require('C:/Users/anais/jardininteractif/assets/Asset_home_1.png')}
+				  style={{width : 265, height : 390, top : 20, Left : 55}}
+				> 
+			<View
+                style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
+				>
+				<TouchableOpacity onPress={() => navigation.navigate('3')}>
+					<Text style={{	fontFamily: 'ArimaMadurai_400Regular',
+						fontSize: 38,
+						fontStyle: 'normal',
+						fontWeight: '500',
+						lineHeight: 58,
+						textAlign: 'center',
+						color: "#1E5F4B",
+					}}> 
+					Le Jardin {"\n"}Secret de {"\n"}Compiègne 
+					</Text>
+				</TouchableOpacity>
+            </View>
+		</ImageBackground>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#1E5F4B",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
