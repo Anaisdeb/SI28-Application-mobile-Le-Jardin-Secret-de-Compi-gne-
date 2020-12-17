@@ -1,68 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Button, Alert } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_800ExtraBold} from '@expo-google-fonts/arima-madurai';
 //import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
-import { Camera } from 'expo-camera';
-import * as Location from 'expo-location';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function App({navigation}) {
-  const [hasPermission, setHasPermission] = useState(null);
-  const [type, setType] = useState(Camera.Constants.Type.back);
-  
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null); //crée une fonction setErrorMsg qui prend la variable errorMsg
   
 	let [fontsLoaded] = useFonts({
 		ArimaMadurai_400Regular,
 		ArimaMadurai_800ExtraBold,
   });
-  
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
 
-      
-	  let { statusLoc } = await Location.requestPermissionsAsync();
-      if (statusLoc !== 'granted') {
-        setErrorMsg('Pas de permission pour la géolocalisation');
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-	  
-    })();
-  }, []);
-  
-  
-
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-
-  
-  let text = 'En attente de la localisation..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
-  
-
+  const styles = StyleSheet.create({
+  logo: {
+    width : 207,
+	height : 230,
+	top : 33,
+	left : 89,
+  },
+});
   
   return (
     <View style={{ flex: 1 }}>
-      <Camera style={{ flex: 1 }} type={type}>
         <View
           style={{
-            backgroundColor: 'transparent',
+            backgroundColor: 'white',
             flexDirection: 'row',
 			height: '40%',
           }}>
+		  <Image
+			style={styles.logo}
+			source={require('./assets/Asset_onboarding_3.png')}
+		  />
         </View>
       
 	  
@@ -82,10 +51,10 @@ export default function App({navigation}) {
 		   <View style={{ flexDirection: 'row'
 		   
 		   }}>
-           <Icon name="ios-radio-button-on" size={20} color = {'#1E5F4B'}/><Icon name="ios-radio-button-off" size={20} color = {'#F1E3BF'}/><Icon name="ios-radio-button-off" size={20}color = {'#F1E3BF'}/>
+           <Icon name="ios-radio-button-off" size={20} color = {'#F1E3BF'}/><Icon name="ios-radio-button-off" size={20}color = {'#F1E3BF'}/><Icon name="ios-radio-button-on" size={20} color = {'#1E5F4B'}/>
 		   </View>
-		   <Text style={{ fontSize: 18, marginBottom: 40, marginTop: 20, color: '#1E5F4B',  textAlign: 'center', marginHorizontal: 50, fontFamily: 'ArimaMadurai_800ExtraBold' }}> DÉCOUVRE UN LIEU MAGIQUE </Text>
-		   <Text style={{ fontSize: 16, marginBottom: 20, color: 'black',  textAlign: 'center', marginHorizontal: 50, fontFamily: 'ArimaMadurai_400Regular' }}> Grâce à cette application, tu vas découvrir un des lieux magiques de Compiègne : le <Text style={{ fontWeight: "bold",}}>Jardin Secret des Remparts </Text> </Text>
+		   <Text style={{ fontSize: 18, marginBottom: 40, marginTop: 20, color: '#1E5F4B',  textAlign: 'center', marginHorizontal: 50, fontFamily: 'ArimaMadurai_800ExtraBold' }}> RENDS-TOI SUR PLACE </Text>
+		   <Text style={{ fontSize: 16, marginBottom: 20, color: 'black',  textAlign: 'center', marginHorizontal: 50, fontFamily: 'ArimaMadurai_400Regular' }}> C’est bon, tu es prêt(e) ? Alors rendez-vous au <Text style={{ fontWeight: "bold",}}>16 rue des Fossés</Text> (à Compiègne) ! Allume l’application une fois là-bas...</Text>
           </View>
 		  
 		  <View style={{backgroundColor:'#1E5F4B',
@@ -98,19 +67,18 @@ export default function App({navigation}) {
 
 						}}>
 			
-			<TouchableOpacity onPress={() => navigation.navigate('Nouvelle mission')}>
+			<TouchableOpacity onPress={() => navigation.navigate('6')}>
 					<Text style={{	fontFamily: 'ArimaMadurai_400Regular',
 						fontSize: 18,
 						fontStyle: 'normal',
 						textAlign: 'center',
 						color: "white",
 					}}> 
-					CONTINUER
+					J'Y SUIS !
 					</Text>
 				</TouchableOpacity>	
 		  </View>
 		</View>	  
-	  </Camera>
     </View>
 	
   );

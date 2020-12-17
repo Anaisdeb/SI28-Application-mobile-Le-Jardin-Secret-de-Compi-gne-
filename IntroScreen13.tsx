@@ -1,37 +1,68 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Button, Alert } from 'react-native';
 import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_800ExtraBold} from '@expo-google-fonts/arima-madurai';
 //import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
+import { Camera } from 'expo-camera';
+import * as Location from 'expo-location';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function App({navigation}) {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
+  
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null); //crée une fonction setErrorMsg qui prend la variable errorMsg
   
 	let [fontsLoaded] = useFonts({
 		ArimaMadurai_400Regular,
 		ArimaMadurai_800ExtraBold,
   });
+  
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
 
-  const styles = StyleSheet.create({
-  logo: {
-    width : 220,
-	height : 220,
-	top : 40,
-	left : 55,
-  },
-});
+      
+	  let { statusLoc } = await Location.requestPermissionsAsync();
+      if (statusLoc !== 'granted') {
+        setErrorMsg('Pas de permission pour la géolocalisation');
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+	  
+    })();
+  }, []);
+  
+  
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
+  
+  let text = 'En attente de la localisation..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
+  
+
   
   return (
     <View style={{ flex: 1 }}>
+      <Camera style={{ flex: 1 }} type={type}>
         <View
           style={{
-            backgroundColor: 'white',
+            backgroundColor: 'transparent',
             flexDirection: 'row',
 			height: '40%',
           }}>
-		  <Image
-			style={styles.logo}
-			source={require('./assets/Asset_onboarding_1.png')}
-		  />
         </View>
       
 	  
@@ -67,7 +98,7 @@ export default function App({navigation}) {
 
 						}}>
 			
-			<TouchableOpacity onPress={() => navigation.navigate('4')}>
+			<TouchableOpacity onPress={() => navigation.navigate('Nouvelle mission')}>
 					<Text style={{	fontFamily: 'ArimaMadurai_400Regular',
 						fontSize: 18,
 						fontStyle: 'normal',
@@ -79,6 +110,7 @@ export default function App({navigation}) {
 				</TouchableOpacity>	
 		  </View>
 		</View>	  
+	  </Camera>
     </View>
 	
   );

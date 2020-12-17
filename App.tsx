@@ -10,6 +10,14 @@ import IntroScreen2 from './IntroScreen2';
 import IntroScreen3 from './IntroScreen3';
 import IntroScreen4 from './IntroScreen4';
 import IntroScreen5 from './IntroScreen5';
+import IntroScreen6 from './IntroScreen6';
+import IntroScreen7 from './IntroScreen7';
+import IntroScreen8 from './IntroScreen8';
+import IntroScreen9 from './IntroScreen9';
+import IntroScreen10 from './IntroScreen10';
+import IntroScreen11 from './IntroScreen11';
+import IntroScreen12 from './IntroScreen12';
+import IntroScreen13 from './IntroScreen13';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +30,14 @@ export default function App() {
 		<Stack.Screen name="3" component={IntroScreen3} />
 		<Stack.Screen name="4" component={IntroScreen4} />
 		<Stack.Screen name="5" component={IntroScreen5} />
+		<Stack.Screen name="6" component={IntroScreen6} />
+		<Stack.Screen name="7" component={IntroScreen7} />
+		<Stack.Screen name="8" component={IntroScreen8} />
+		<Stack.Screen name="9" component={IntroScreen9} />
+		<Stack.Screen name="10" component={IntroScreen10} />
+		<Stack.Screen name="11" component={IntroScreen11} />
+		<Stack.Screen name="12" component={IntroScreen12} />
+		<Stack.Screen name="13" component={IntroScreen13} />
       </Stack.Navigator>
     </NavigationContainer>
   );

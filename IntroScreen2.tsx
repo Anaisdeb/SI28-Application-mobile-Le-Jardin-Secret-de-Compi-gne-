@@ -12,7 +12,7 @@ export default function App({ navigation }) {
   
     <View style={styles.container}>
 		<ImageBackground
-				  source={require('C:/Users/anais/jardininteractif/assets/Asset_home_1.png')}
+				  source={require('./assets/Asset_home_1.png')}
 				  style={{width : 265, height : 390, top : 20, Left : 55}}
 				> 
 			<View
