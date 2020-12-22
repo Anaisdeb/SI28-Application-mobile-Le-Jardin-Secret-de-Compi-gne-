@@ -19,12 +19,22 @@ import IntroScreen11 from './IntroScreen11';
 import IntroScreen12 from './IntroScreen12';
 import IntroScreen13 from './IntroScreen13';
 
+const forFade = ({ current }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
+
 const Stack = createStackNavigator();
 
 export default function App() {
  return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+	  screenOptions={{
+		  headerShown: false,
+		  cardStyleInterpolator: forFade,
+	   }}>
 		<Stack.Screen name="1" component={IntroScreen1} />
 		<Stack.Screen name="2" component={IntroScreen2} />
 		<Stack.Screen name="3" component={IntroScreen3} />
