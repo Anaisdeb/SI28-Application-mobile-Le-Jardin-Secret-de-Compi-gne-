@@ -77,10 +77,12 @@ export default function App({navigation}) {
 						height: '40%',
 						justifyContent: 'center',
 					  }}>
-					  <Image
-						style={styles.logo}
-						source={require('./assets/Asset_boiteauxlettres_lettre.png')}
-					  />
+					  <TouchableOpacity onPress={() => navigation.navigate('12')}>
+						  <Image
+							style={styles.logo}
+							source={require('./assets/Asset_boiteauxlettres_lettre.png')}
+						  />
+					  </TouchableOpacity>	
 					</View>
 				<View style={{backgroundColor:'white',
 						paddingHorizontal: 50,
@@ -91,7 +93,6 @@ export default function App({navigation}) {
 						shadowradius: 20,
 						shadowOpacity: 0.5,
 				}}>
-					<TouchableOpacity onPress={() => navigation.navigate('12')}>
 						<Text style={{	fontFamily: 'ArimaMadurai_400Regular',
 							fontSize: 18,
 							fontStyle: 'normal',
@@ -100,7 +101,6 @@ export default function App({navigation}) {
 						}}> 
 						LIRE
 						</Text>
-					</TouchableOpacity>	
 				</View>
 			</View>
 		</Camera>
