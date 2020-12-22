@@ -4,9 +4,6 @@ import { useFonts, ArimaMadurai_400Regular } from '@expo-google-fonts/arima-madu
 
 
 export default function App({ navigation }) {
-	let [fontsLoaded] = useFonts({
-		ArimaMadurai_400Regular,
-  });
   
   	setTimeout(() => {
 		navigation.navigate('2'); //this.props.navigation.navigate('Login')

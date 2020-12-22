@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_800ExtraBold} from '@expo-google-fonts/arima-madurai';
 //import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
 import Icon from 'react-native-vector-icons/Ionicons';
+import AppLoading from 'expo-app-loading';
 
 export default function App({navigation}) {
   
@@ -20,6 +21,9 @@ export default function App({navigation}) {
   },
 });
   
+   if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
     <View style={{ flex: 1 }}>
         <View
@@ -82,4 +86,5 @@ export default function App({navigation}) {
     </View>
 	
   );
+  }
 }
