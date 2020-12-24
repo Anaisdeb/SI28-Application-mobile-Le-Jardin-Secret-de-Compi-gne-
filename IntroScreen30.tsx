@@ -82,14 +82,14 @@ export default function App({navigation}) {
 						shadowradius: 20,
 						shadowOpacity: 0.5,
 				}}>
-					<TouchableOpacity onPress={() => navigation.navigate('11')}>
+					<TouchableOpacity onPress={() => navigation.navigate('31')}>
 						<Text style={{	fontFamily: 'ArimaMadurai_900Black',
 							fontSize: 18,
 							fontStyle: 'normal',
 							textAlign: 'center',
 							color: "#1E5F4B",
 						}}> 
-						LETTRE
+						TREFLE
 						</Text>
 					</TouchableOpacity>	
 				</View>

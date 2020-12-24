@@ -18,6 +18,31 @@ import IntroScreen10 from './IntroScreen10';
 import IntroScreen11 from './IntroScreen11';
 import IntroScreen12 from './IntroScreen12';
 import IntroScreen13 from './IntroScreen13';
+import IntroScreen14 from './IntroScreen14';
+import IntroScreen15 from './IntroScreen15';
+import IntroScreen16 from './IntroScreen16';
+import IntroScreen17 from './IntroScreen17';
+import IntroScreen18 from './IntroScreen18';
+import IntroScreen19 from './IntroScreen19';
+import IntroScreen20 from './IntroScreen20';
+import IntroScreen21 from './IntroScreen21';
+import IntroScreen22 from './IntroScreen22';
+import IntroScreen23 from './IntroScreen23';
+import IntroScreen24 from './IntroScreen24';
+import IntroScreen25 from './IntroScreen25';
+import IntroScreen26 from './IntroScreen26';
+import IntroScreen27 from './IntroScreen27';
+import IntroScreen28 from './IntroScreen28';
+import IntroScreen29 from './IntroScreen29';
+import IntroScreen30 from './IntroScreen30';
+import IntroScreen31 from './IntroScreen31';
+import IntroScreen32 from './IntroScreen32';
+import IntroScreen33 from './IntroScreen33';
+import IntroScreen34 from './IntroScreen34';
+import IntroScreen35 from './IntroScreen35';
+import IntroScreen36 from './IntroScreen36';
+import IntroScreen37 from './IntroScreen37';
+import IntroScreen38 from './IntroScreen38';
 
 const forFade = ({ current }) => ({
   cardStyle: {
@@ -48,6 +73,32 @@ export default function App() {
 		<Stack.Screen name="11" component={IntroScreen11} />
 		<Stack.Screen name="12" component={IntroScreen12} />
 		<Stack.Screen name="13" component={IntroScreen13} />
+		<Stack.Screen name="14" component={IntroScreen14} />
+		<Stack.Screen name="15" component={IntroScreen15} />
+		<Stack.Screen name="16" component={IntroScreen16} />
+		<Stack.Screen name="17" component={IntroScreen17} />
+		<Stack.Screen name="18" component={IntroScreen18} />
+		<Stack.Screen name="19" component={IntroScreen19} />
+		<Stack.Screen name="20" component={IntroScreen20} />
+		<Stack.Screen name="21" component={IntroScreen21} />
+		<Stack.Screen name="22" component={IntroScreen22} />
+		<Stack.Screen name="23" component={IntroScreen23} />
+		<Stack.Screen name="24" component={IntroScreen24} />
+		<Stack.Screen name="25" component={IntroScreen25} />
+		<Stack.Screen name="26" component={IntroScreen26} />
+		<Stack.Screen name="27" component={IntroScreen27} />
+		<Stack.Screen name="28" component={IntroScreen28} />
+		<Stack.Screen name="29" component={IntroScreen29} />
+		<Stack.Screen name="30" component={IntroScreen30} />
+		<Stack.Screen name="31" component={IntroScreen31} />
+		<Stack.Screen name="32" component={IntroScreen32} />
+		<Stack.Screen name="33" component={IntroScreen33} />
+		<Stack.Screen name="34" component={IntroScreen34} />
+		<Stack.Screen name="35" component={IntroScreen35} />
+		<Stack.Screen name="36" component={IntroScreen36} />
+		<Stack.Screen name="37" component={IntroScreen37} />
+		<Stack.Screen name="38" component={IntroScreen38} />
+		
       </Stack.Navigator>
     </NavigationContainer>
   );

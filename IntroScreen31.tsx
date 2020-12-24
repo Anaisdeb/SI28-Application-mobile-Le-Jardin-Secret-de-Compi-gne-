@@ -3,14 +3,12 @@ import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
 import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
-import { ArimaMadurai_900Black } from '@expo-google-fonts/raleway';
 import AppLoading from 'expo-app-loading';
 
 export default function App({navigation}) {
 	
 	let [fontsLoaded] = useFonts({
-		Raleway_400Regular,
-		ArimaMadurai_900Black,
+		Raleway_400Regular
   });
   
   const [hasPermission, setHasPermission] = useState(null);
@@ -56,6 +54,9 @@ export default function App({navigation}) {
   },
 });
   
+ if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
     <View style={{ flex: 1 }}>
 		<Camera style={{ flex: 1 }} type={type}>
@@ -71,30 +72,25 @@ export default function App({navigation}) {
 					color: 'white',
 					textAlign: 'center',
 					fontFamily: 'Raleway_400Regular' }}>
-					(Trace colorée)
+					la trèfle :
 				</Text>
-				<View style={{backgroundColor:'white',
-						paddingHorizontal: 50,
-						paddingVertical: 10,
-						marginHorizontal: 40,
-						marginBottom: 10,
-						borderRadius: 4,
-						shadowradius: 20,
-						shadowOpacity: 0.5,
-				}}>
-					<TouchableOpacity onPress={() => navigation.navigate('11')}>
-						<Text style={{	fontFamily: 'ArimaMadurai_900Black',
-							fontSize: 18,
-							fontStyle: 'normal',
-							textAlign: 'center',
-							color: "#1E5F4B",
-						}}> 
-						LETTRE
-						</Text>
-					</TouchableOpacity>	
-				</View>
+				<View
+					  style={{
+						backgroundColor: 'transparent',
+						flexDirection: 'row',
+						height: '40%',
+						justifyContent: 'center',
+					  }}>
+					  <TouchableOpacity onPress={() => navigation.navigate('32')}>
+						  <Image
+							style={styles.logo}
+							source={require('./assets/Asset_puits_bague.png')}
+						  />
+					  </TouchableOpacity>	
+					</View>
 			</View>
 		</Camera>
     </View>
   );
+}
 }

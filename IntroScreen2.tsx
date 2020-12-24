@@ -1,8 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground, Alert, TouchableOpacity } from "react-native";
-import AppLoading from 'expo-app-loading';
 import { useFonts, ArimaMadurai_400Regular } from '@expo-google-fonts/arima-madurai';
-
+import AppLoading from 'expo-app-loading';
 
 export default function App({ navigation }) {
 	let [fontsLoaded] = useFonts({

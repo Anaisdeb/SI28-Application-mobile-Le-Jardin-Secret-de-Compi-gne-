@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_800ExtraBold} from '@expo-google-fonts/arima-madurai';
-//import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
+import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
+import { CormorantUpright_400Regular } from '@expo-google-fonts/cormorant-upright';
+import AppLoading from 'expo-app-loading';
 import BlurView from "react-native-blur";
 
 export default function App({navigation}) {
   
 	let [fontsLoaded] = useFonts({
 		ArimaMadurai_400Regular,
-		ArimaMadurai_800ExtraBold,
+		ArimaMadurai_900Black,
+		CormorantUpright_400Regular,
   });
 
   const styles = StyleSheet.create({
@@ -20,6 +22,9 @@ export default function App({navigation}) {
   },
 });
   
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
     <View style={{ flex: 1 }}>
 	  <View style={{
@@ -33,10 +38,10 @@ export default function App({navigation}) {
              alignItems: 'center',
 			 alignSelf: 'flex-end',
              justifyContent: 'center',
-             marginTop: 80,
-			 marginBottom: 80,
-			 marginLeft : 20,
-			 marginRight : 20,
+             marginTop: 170,
+			 marginBottom: 140,
+			 marginLeft : 50,
+			 marginRight : 50,
 			 backgroundColor: 'white',
            }}>
 			<Text style={{ 
@@ -46,7 +51,7 @@ export default function App({navigation}) {
 				color: 'black', 
 				textAlign: 'auto',
 				marginHorizontal: 50,
-				fontFamily: 'ArimaMadurai_400Regular' }}>
+				fontFamily: 'CormorantUpright_400Regular' }}>
 				
 				Cher M. Bouchardon, {'\n'}{'\n'}
 				Comme tu vas très vite le découvrir, ce jardin regorge de mystères du passé Compiègnois.  {'\n'}{'\n'}
@@ -54,18 +59,18 @@ export default function App({navigation}) {
 			</Text>
 		  
 		  <View style={{backgroundColor:'#1E5F4B',
-						paddingHorizontal: 80,
-						paddingVertical: 10,
-						marginHorizontal: 10,
-						marginBottom: 10,
+						paddingHorizontal: 50,
+						paddingVertical: 8,
+						marginHorizontal: 0,
+						marginBottom: 0,
 						borderRadius: 4,
-						shadowradius: 20,
+						shadowradius: 10,
 						shadowOpacity: 0.5,
 
 						}}>
 			
 			<TouchableOpacity onPress={() => navigation.navigate('13')}>
-					<Text style={{	fontFamily: 'ArimaMadurai_400Regular',
+					<Text style={{	fontFamily: 'ArimaMadurai_900Black',
 						fontSize: 16,
 						fontStyle: 'normal',
 						textAlign: 'center',
@@ -80,4 +85,5 @@ export default function App({navigation}) {
     </View>
 	
   );
+}
 }

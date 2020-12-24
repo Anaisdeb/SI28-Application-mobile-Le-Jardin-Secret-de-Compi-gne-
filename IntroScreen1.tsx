@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground, Alert, TouchableOpacity } from "react-native";
-import { useFonts, ArimaMadurai_400Regular } from '@expo-google-fonts/arima-madurai';
 
 
 export default function App({ navigation }) {

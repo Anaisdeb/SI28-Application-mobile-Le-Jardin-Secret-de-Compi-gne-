@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
 import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
+import AppLoading from 'expo-app-loading';
 
 export default function App({navigation}) {
 	
@@ -53,6 +54,9 @@ export default function App({navigation}) {
   },
 });
   
+ if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
     <View style={{ flex: 1 }}>
 		<Camera style={{ flex: 1 }} type={type}>
@@ -84,26 +88,9 @@ export default function App({navigation}) {
 						  />
 					  </TouchableOpacity>	
 					</View>
-				<View style={{backgroundColor:'white',
-						paddingHorizontal: 50,
-						paddingVertical: 10,
-						marginHorizontal: 50,
-						marginBottom: 10,
-						borderRadius: 4,
-						shadowradius: 20,
-						shadowOpacity: 0.5,
-				}}>
-						<Text style={{	fontFamily: 'ArimaMadurai_400Regular',
-							fontSize: 18,
-							fontStyle: 'normal',
-							textAlign: 'center',
-							color: "#1E5F4B",
-						}}> 
-						LIRE
-						</Text>
-				</View>
 			</View>
 		</Camera>
     </View>
   );
+}
 }

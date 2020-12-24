@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_800ExtraBold} from '@expo-google-fonts/arima-madurai';
-//import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
+import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
+import { Raleway_400Regular } from '@expo-google-fonts/raleway';
 import BlurView from "react-native-blur";
+import AppLoading from 'expo-app-loading';
 
 export default function App({navigation}) {
   
 	let [fontsLoaded] = useFonts({
 		ArimaMadurai_400Regular,
-		ArimaMadurai_800ExtraBold,
+		ArimaMadurai_900Black,
+		Raleway_400Regular,
   });
 
   const styles = StyleSheet.create({
@@ -20,6 +22,9 @@ export default function App({navigation}) {
   },
 });
   
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
     <View style={{ flex: 1 }}>
 	  <View style={{
@@ -33,10 +38,10 @@ export default function App({navigation}) {
              alignItems: 'center',
 			 alignSelf: 'flex-end',
              justifyContent: 'center',
-             marginTop: 80,
-			 marginBottom: 80,
-			 marginLeft : 20,
-			 marginRight : 20,
+             marginTop: 170,
+			 marginBottom: 120,
+			 marginLeft : 50,
+			 marginRight : 50,
 			 backgroundColor: 'white',
            }}>
 			<Text style={{ 
@@ -45,8 +50,9 @@ export default function App({navigation}) {
 				marginTop: 20,
 				color: 'black', 
 				textAlign: 'auto',
-				marginHorizontal: 50,
-				fontFamily: 'ArimaMadurai_400Regular' }}>
+				marginHorizontal: 20,
+				backgroundColor: 'white',
+				fontFamily: 'Raleway_400Regular' }}>
 				M. Bouchardon vient visiter le Jardin Secret des Remparts pour la première fois. Il devait venir avec sa femme mais celle-ci a eu un empêchement et lui a fait promettre de ramener un souvenir de tous les lieux du jardin pouvant lui rappeler Compiègne. 
 				{'\n'}{'\n'}Pour aider M. Bouchardon dans sa quête de souvenirs, un ami connaissant le lieu lui a laissé une lettre dans le jardin.
 			</Text>
@@ -63,7 +69,7 @@ export default function App({navigation}) {
 						}}>
 			
 			<TouchableOpacity onPress={() => navigation.navigate('8')}>
-					<Text style={{	fontFamily: 'ArimaMadurai_400Regular',
+					<Text style={{	fontFamily: 'ArimaMadurai_900Black',
 						fontSize: 16,
 						fontStyle: 'normal',
 						textAlign: 'center',
@@ -78,4 +84,5 @@ export default function App({navigation}) {
     </View>
 	
   );
+}
 }

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
-import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
-import { ArimaMadurai_900Black } from '@expo-google-fonts/raleway';
+import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
+import { Raleway_400Regular, Raleway_700Bold, } from '@expo-google-fonts/raleway';
 import AppLoading from 'expo-app-loading';
 
 export default function App({navigation}) {
 	
 	let [fontsLoaded] = useFonts({
-		Raleway_400Regular,
 		ArimaMadurai_900Black,
+		Raleway_400Regular,
+		Raleway_700Bold,
   });
   
   const [hasPermission, setHasPermission] = useState(null);
@@ -46,55 +47,45 @@ export default function App({navigation}) {
   } else if (location) {
     text = JSON.stringify(location);
   }
-	
+  
   const styles = StyleSheet.create({
   logo: {
-    width : 190,
-	height : 180,
+    width : 200,
+	height : 125,
 	top : 30,
 	left :0,
   },
 });
-  
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
     <View style={{ flex: 1 }}>
 		<Camera style={{ flex: 1 }} type={type}>
 			<View style={{
 				 flex: 1,
+				 alignItems: 'center',
 				 justifyContent: 'center',
 				 marginTop: 20,
 			   }}>
-				<Text style={{ 
-					fontSize: 30,
-					marginBottom: 10,
-					marginHorizontal: 10,
-					color: 'white',
-					textAlign: 'center',
-					fontFamily: 'Raleway_400Regular' }}>
-					(Trace colorée)
-				</Text>
-				<View style={{backgroundColor:'white',
-						paddingHorizontal: 50,
-						paddingVertical: 10,
-						marginHorizontal: 40,
-						marginBottom: 10,
-						borderRadius: 4,
-						shadowradius: 20,
-						shadowOpacity: 0.5,
-				}}>
-					<TouchableOpacity onPress={() => navigation.navigate('11')}>
-						<Text style={{	fontFamily: 'ArimaMadurai_900Black',
-							fontSize: 18,
-							fontStyle: 'normal',
-							textAlign: 'center',
-							color: "#1E5F4B",
-						}}> 
-						LETTRE
-						</Text>
-					</TouchableOpacity>	
-				</View>
+				  <TouchableOpacity onPress={() => navigation.navigate('25')}>
+					  <Text style={{ 
+				fontSize: 30,
+				marginBottom: 50,
+				paddingHorizontal: 50,
+				color: 'white',
+				textAlign: 'center',
+				textShadowColor:'#1E5F4B',
+				textShadowOffset:{width: 1, height: 1},
+				textShadowRadius:1,
+				fontFamily: 'Raleway_700Bold' }}>
+				Aller vers 3e apparition
+					</Text>
+				  </TouchableOpacity>
 			</View>
 		</Camera>
     </View>
   );
+}
 }

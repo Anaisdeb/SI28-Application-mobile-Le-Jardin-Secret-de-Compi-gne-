@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
-import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
+import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
+import { Raleway_400Regular ,Raleway_700Bold } from '@expo-google-fonts/raleway';
+import AppLoading from 'expo-app-loading';
 
 export default function App({navigation}) {
 	
 	let [fontsLoaded] = useFonts({
-		Raleway_400Regular
+		ArimaMadurai_900Black,
+		Raleway_400Regular,
+		Raleway_700Bold,
   });
   
   const [hasPermission, setHasPermission] = useState(null);
@@ -53,6 +57,9 @@ export default function App({navigation}) {
   },
 });
   
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
     <View style={{ flex: 1 }}>
 		<Camera style={{ flex: 1 }} type={type}>
@@ -66,9 +73,13 @@ export default function App({navigation}) {
 					fontSize: 30,
 					marginBottom: 10,
 					marginHorizontal: 10,
+					paddingHorizontal: 50,
 					color: 'white',
 					textAlign: 'center',
-					fontFamily: 'Raleway_400Regular' }}>
+					textShadowColor:'#1E5F4B',
+					textShadowOffset:{width: 1, height: 1},
+					textShadowRadius:1,
+					fontFamily: 'Raleway_700Bold' }}>
 					Entoure la boîte aux lettres avec ton doigt
 				</Text>
 				<View
@@ -92,7 +103,7 @@ export default function App({navigation}) {
 						shadowOpacity: 0.5,
 				}}>
 					<TouchableOpacity onPress={() => navigation.navigate('10')}>
-						<Text style={{	fontFamily: 'ArimaMadurai_400Regular',
+						<Text style={{	fontFamily: 'ArimaMadurai_900Black',
 							fontSize: 18,
 							fontStyle: 'normal',
 							textAlign: 'center',
@@ -106,4 +117,5 @@ export default function App({navigation}) {
 		</Camera>
     </View>
   );
+}
 }
