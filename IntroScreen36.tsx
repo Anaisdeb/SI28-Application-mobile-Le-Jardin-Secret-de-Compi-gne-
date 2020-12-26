@@ -1,100 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
-import { Camera } from 'expo-camera';
-import * as Location from 'expo-location';
-import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
-import { Raleway_400Regular, Raleway_700Bold, } from '@expo-google-fonts/raleway';
+import React from "react";
+import { View, Text, StyleSheet, ImageBackground, Alert, TouchableOpacity } from "react-native";
+import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_700Bold } from '@expo-google-fonts/arima-madurai';
 import AppLoading from 'expo-app-loading';
 
-export default function App({navigation}) {
-	
+export default function App({ navigation }) {
 	let [fontsLoaded] = useFonts({
-		ArimaMadurai_900Black,
-		Raleway_400Regular,
-		Raleway_700Bold,
+		ArimaMadurai_400Regular,
+		ArimaMadurai_700Bold,
   });
   
-  const [hasPermission, setHasPermission] = useState(null);
-  const [type, setType] = useState(Camera.Constants.Type.back);
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-
-      let { statusLoc } = await Location.requestPermissionsAsync();
-      if (statusLoc !== 'granted') {
-        setErrorMsg(' ');
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
-
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-
-  let text = 'En attente de la localisation..';
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
-
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-  return (
-    <View style={{ flex: 1 }}>
-		<Camera style={{ flex: 1 }} type={type}>
-			<View style={{
-				 flex: 1,
-				 alignItems: 'center',
-				 justifyContent: 'center',
-				 marginTop: 20,
-			   }}>
-				<Text style={{ 
-					fontSize: 30,
-					marginBottom: 50,
-					paddingHorizontal: 50,
-					color: 'white',
-					textAlign: 'center',
-					textShadowColor:'#1E5F4B',
-					textShadowOffset:{width: 1, height: 1},
-					textShadowRadius:1,
-					fontFamily: 'Raleway_700Bold' }}>
-					Rends toi au labyrinthe près des remparts...
-				</Text>
-				<View style={{backgroundColor:'white',
-						paddingHorizontal: 50,
-						paddingVertical: 10,
-						marginHorizontal: 10,
-						marginBottom: 10,
-						borderRadius: 4,
-						shadowradius: 20,
-						shadowOpacity: 0.5,
-				}}>
-					<TouchableOpacity onPress={() => navigation.navigate('9')}>
-						<Text style={{	fontFamily: 'ArimaMadurai_900Black',
-							fontSize: 18,
+	return (
+		<View style={styles.container}>
+			<ImageBackground
+					  source={require('./assets/Photofin_jeanyves.png')}
+					  style={{height: "100%"}}
+					> 
+				<View
+					style={{
+						flex: 1,
+						justifyContent: "flex-start",
+					}}
+					>
+					<TouchableOpacity onPress={() => navigation.navigate('37')}>
+						<Text style={{	
+							fontSize: 38,
 							fontStyle: 'normal',
+							fontWeight: '500',
+							lineHeight: 50,
 							textAlign: 'center',
 							color: "#1E5F4B",
+							paddingVertical: 50,
+							paddingRight: 55,
 						}}> 
-						J’Y SUIS !
+						<Text style={{ fontFamily: 'ArimaMadurai_700Bold'}}> Jean-Yves Sinnas </Text>
+						<Text style={{ fontFamily: 'ArimaMadurai_400Regular'}}> {'\n'}IDS </Text>
 						</Text>
-					</TouchableOpacity>	
+					</TouchableOpacity>
 				</View>
-			</View>
-		</Camera>
-    </View>
-  );
+			</ImageBackground>
+		</View>
+	  );
+  }
 }
-}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#1E5F4B",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

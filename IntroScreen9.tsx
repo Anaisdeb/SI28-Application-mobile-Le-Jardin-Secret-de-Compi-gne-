@@ -51,7 +51,7 @@ export default function App({navigation}) {
   const styles = StyleSheet.create({
   logo: {
     width : 190,
-	height : 180,
+	height : 190,
 	top : 30,
 	left :0,
   },
@@ -73,7 +73,7 @@ export default function App({navigation}) {
 					fontSize: 30,
 					marginBottom: 10,
 					marginHorizontal: 10,
-					paddingHorizontal: 50,
+					paddingHorizontal: 40,
 					color: 'white',
 					textAlign: 'center',
 					textShadowColor:'#1E5F4B',
@@ -88,30 +88,12 @@ export default function App({navigation}) {
 						flexDirection: 'row',
 						height: '40%',
 					  }}>
-					  <Image
-						style={styles.logo}
-						source={require('./assets/Asset_boiteauxlettres_icon.png')}
-					  />
-					</View>
-				<View style={{backgroundColor:'white',
-						paddingHorizontal: 50,
-						paddingVertical: 10,
-						marginHorizontal: 10,
-						marginBottom: 10,
-						borderRadius: 4,
-						shadowradius: 20,
-						shadowOpacity: 0.5,
-				}}>
-					<TouchableOpacity onPress={() => navigation.navigate('10')}>
-						<Text style={{	fontFamily: 'ArimaMadurai_900Black',
-							fontSize: 18,
-							fontStyle: 'normal',
-							textAlign: 'center',
-							color: "#1E5F4B",
-						}}> 
-						ENTOURÉE
-						</Text>
-					</TouchableOpacity>	
+					  <TouchableOpacity onPress={() => navigation.navigate('10')}>
+						  <Image
+							style={styles.logo}
+							source={require('./assets/Asset_boiteauxlettres_icon.png')}
+						  />
+					  </TouchableOpacity>
 				</View>
 			</View>
 		</Camera>

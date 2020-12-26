@@ -47,9 +47,9 @@ export default function App({navigation}) {
 	
   const styles = StyleSheet.create({
   logo: {
-    width : 190,
-	height : 180,
-	top : 30,
+    width : 300,
+	height : 270,
+	top : 0,
 	left :0,
   },
 });
@@ -60,26 +60,15 @@ export default function App({navigation}) {
   return (
     <View style={{ flex: 1 }}>
 		<Camera style={{ flex: 1 }} type={type}>
-			<View style={{
-				 flex: 1,
-				 justifyContent: 'center',
-				 marginTop: 20,
-			   }}>
-				<Text style={{ 
-					fontSize: 30,
-					marginBottom: 10,
-					marginHorizontal: 10,
-					color: 'white',
-					textAlign: 'center',
-					fontFamily: 'Raleway_400Regular' }}>
-					la lettre :
-				</Text>
 				<View
 					  style={{
+						flex: 1,
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginTop: 0,
 						backgroundColor: 'transparent',
 						flexDirection: 'row',
-						height: '40%',
-						justifyContent: 'center',
+						height: '50%',
 					  }}>
 					  <TouchableOpacity onPress={() => navigation.navigate('12')}>
 						  <Image
@@ -87,7 +76,6 @@ export default function App({navigation}) {
 							source={require('./assets/Asset_boiteauxlettres_lettre.png')}
 						  />
 					  </TouchableOpacity>	
-					</View>
 			</View>
 		</Camera>
     </View>

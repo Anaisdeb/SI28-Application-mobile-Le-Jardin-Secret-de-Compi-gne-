@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Camera } from 'expo-camera';
+import * as Location from 'expo-location';
 import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
 import { CormorantUpright_400Regular } from '@expo-google-fonts/cormorant-upright';
 import AppLoading from 'expo-app-loading';
@@ -12,6 +14,40 @@ export default function App({navigation}) {
 		ArimaMadurai_900Black,
 		CormorantUpright_400Regular,
   });
+
+ const [hasPermission, setHasPermission] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+
+      let { statusLoc } = await Location.requestPermissionsAsync();
+      if (statusLoc !== 'granted') {
+        setErrorMsg(' ');
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
+  let text = 'En attente de la localisation..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
 
   const styles = StyleSheet.create({
   logo: {
@@ -27,11 +63,11 @@ export default function App({navigation}) {
   } else {
   return (
     <View style={{ flex: 1 }}>
+	<Camera style={{ flex: 1 }} type={type}>
 	  <View style={{
 		  flex:1,
 		  justifyContent: 'center',
 		  aligntItems: 'center',
-		  backgroundColor: '#E5E1E1',
 	  }}>
 		  <View style={{
              flex: 1,
@@ -43,6 +79,8 @@ export default function App({navigation}) {
 			 marginLeft : 50,
 			 marginRight : 50,
 			 backgroundColor: 'white',
+			 borderRadius: 4,
+			 shadowradius: 20,
            }}>
 			<Text style={{ 
 				fontSize: 16,
@@ -81,7 +119,8 @@ export default function App({navigation}) {
 				</TouchableOpacity>	
 		  </View>
 		</View>	
-        </View>		
+        </View>	
+	</Camera>		
     </View>
 	
   );

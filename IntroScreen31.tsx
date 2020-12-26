@@ -47,9 +47,9 @@ export default function App({navigation}) {
 	
   const styles = StyleSheet.create({
   logo: {
-    width : 190,
-	height : 180,
-	top : 30,
+    width : 300,
+	height : 280,
+	top : 0,
 	left :0,
   },
 });
@@ -65,15 +65,6 @@ export default function App({navigation}) {
 				 justifyContent: 'center',
 				 marginTop: 20,
 			   }}>
-				<Text style={{ 
-					fontSize: 30,
-					marginBottom: 10,
-					marginHorizontal: 10,
-					color: 'white',
-					textAlign: 'center',
-					fontFamily: 'Raleway_400Regular' }}>
-					la trèfle :
-				</Text>
 				<View
 					  style={{
 						backgroundColor: 'transparent',

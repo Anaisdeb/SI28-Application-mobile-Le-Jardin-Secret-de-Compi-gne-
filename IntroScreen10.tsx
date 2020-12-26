@@ -64,16 +64,7 @@ export default function App({navigation}) {
 				 justifyContent: 'center',
 				 marginTop: 20,
 			   }}>
-				<Text style={{ 
-					fontSize: 30,
-					marginBottom: 10,
-					marginHorizontal: 10,
-					color: 'white',
-					textAlign: 'center',
-					fontFamily: 'Raleway_400Regular' }}>
-					(Trace colorée)
-				</Text>
-				<View style={{backgroundColor:'white',
+				<View style={{
 						paddingHorizontal: 50,
 						paddingVertical: 10,
 						marginHorizontal: 40,
@@ -81,15 +72,16 @@ export default function App({navigation}) {
 						borderRadius: 4,
 						shadowradius: 20,
 						shadowOpacity: 0.5,
+						backgroundColor: "transparent",
 				}}>
 					<TouchableOpacity onPress={() => navigation.navigate('11')}>
 						<Text style={{	fontFamily: 'ArimaMadurai_900Black',
-							fontSize: 18,
+							fontSize: 30,
 							fontStyle: 'normal',
 							textAlign: 'center',
 							color: "#1E5F4B",
 						}}> 
-						LETTRE
+						CANVAS : TRACE COLOREE
 						</Text>
 					</TouchableOpacity>	
 				</View>

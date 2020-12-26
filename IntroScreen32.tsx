@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Location from 'expo-location';
-import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
-import { Raleway_400Regular, Raleway_700Bold, } from '@expo-google-fonts/raleway';
+import { useFonts, Raleway_400Regular } from '@expo-google-fonts/raleway';
 import AppLoading from 'expo-app-loading';
 
 export default function App({navigation}) {
 	
 	let [fontsLoaded] = useFonts({
-		ArimaMadurai_900Black,
-		Raleway_400Regular,
-		Raleway_700Bold,
+		Raleway_400Regular
   });
   
   const [hasPermission, setHasPermission] = useState(null);
@@ -47,52 +44,76 @@ export default function App({navigation}) {
   } else if (location) {
     text = JSON.stringify(location);
   }
-
-  if (!fontsLoaded) {
+	
+  const styles = StyleSheet.create({
+  logo: {
+    width : 190,
+	height : 180,
+	top : 30,
+	left :0,
+  },
+});
+  
+ if (!fontsLoaded) {
     return <AppLoading />;
   } else {
   return (
     <View style={{ flex: 1 }}>
 		<Camera style={{ flex: 1 }} type={type}>
 			<View style={{
-				 flex: 1,
-				 alignItems: 'center',
-				 justifyContent: 'center',
-				 marginTop: 20,
-			   }}>
-				<Text style={{ 
-					fontSize: 30,
-					marginBottom: 50,
-					paddingHorizontal: 50,
-					color: 'white',
-					textAlign: 'center',
-					textShadowColor:'#1E5F4B',
-					textShadowOffset:{width: 1, height: 1},
-					textShadowRadius:1,
-					fontFamily: 'Raleway_700Bold' }}>
-					Rends toi au labyrinthe près des remparts...
-				</Text>
-				<View style={{backgroundColor:'white',
-						paddingHorizontal: 50,
+		  flex:1,
+		  justifyContent: 'center',
+		  aligntItems: 'center',
+	  }}>
+		  <View style={{
+             flex: 1,
+             alignItems: 'center',
+			 alignSelf: 'flex-end',
+             justifyContent: 'center',
+             marginTop: 250,
+			 marginBottom: 250,
+			 marginLeft : 40,
+			 marginRight : 40,
+			 backgroundColor: 'white',
+			 borderRadius: 4,
+			 shadowradius: 20,
+           }}>
+			<Text style={{ 
+				fontSize: 16,
+				marginBottom: 30,
+				marginTop: 20,
+				color: 'black', 
+				textAlign: 'auto',
+				marginHorizontal: 20,
+				backgroundColor: 'white',
+				fontFamily: 'Raleway_400Regular' }}>
+				Bravo ! Merci de m’avoir aidé à récolter tous ces souvenirs ! Ma femme sera ravie ! A bientôt, peut-être... !
+			</Text>
+		  
+		  <View style={{backgroundColor:'#1E5F4B',
+						paddingHorizontal: 40,
 						paddingVertical: 10,
 						marginHorizontal: 10,
 						marginBottom: 10,
 						borderRadius: 4,
 						shadowradius: 20,
 						shadowOpacity: 0.5,
-				}}>
-					<TouchableOpacity onPress={() => navigation.navigate('9')}>
-						<Text style={{	fontFamily: 'ArimaMadurai_900Black',
-							fontSize: 18,
-							fontStyle: 'normal',
-							textAlign: 'center',
-							color: "#1E5F4B",
-						}}> 
-						J’Y SUIS !
-						</Text>
-					</TouchableOpacity>	
-				</View>
-			</View>
+
+						}}>
+			
+			<TouchableOpacity onPress={() => navigation.navigate('33')}>
+					<Text style={{	fontFamily: 'ArimaMadurai_900Black',
+						fontSize: 16,
+						fontStyle: 'normal',
+						textAlign: 'center',
+						color: "white",
+					}}> 
+					FINIR L’EXPLORATION
+					</Text>
+				</TouchableOpacity>	
+		  </View>
+		</View>	
+        </View>
 		</Camera>
     </View>
   );
