@@ -26,7 +26,7 @@ export default function App({ navigation }) {
 						textAlign: 'center',
 						color: "#1E5F4B",
 						marginHorizontal: 45,
-						paddingVertical: 65,
+						//paddingVertical: 65,
 					}}> 
 					Merci et à une prochaine fois !
 					</Text>
