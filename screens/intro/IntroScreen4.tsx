@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
-import { Raleway_400Regular } from '@expo-google-fonts/raleway';
 import Icon from 'react-native-vector-icons/Ionicons';
-import AppLoading from 'expo-app-loading';
 
 export default function App({navigation}) {
   
-		let [fontsLoaded] = useFonts({
-		ArimaMadurai_400Regular,
-		ArimaMadurai_900Black,
-		Raleway_400Regular,
-  });
-
   const styles = StyleSheet.create({
   logo: {
     width : 190,
@@ -22,9 +13,6 @@ export default function App({navigation}) {
   },
 });
   
-   if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
   return (
     <View style={{ flex: 1 }}>
         <View
@@ -36,7 +24,7 @@ export default function App({navigation}) {
           }}>
 		  <Image
 			style={styles.logo}
-			source={require('./assets/Asset_onboarding_2.png')}
+			source={require('../../assets/Asset_onboarding_2.png')}
 		  />
         </View>
       
@@ -88,5 +76,4 @@ export default function App({navigation}) {
     </View>
 	
   );
-}
 }

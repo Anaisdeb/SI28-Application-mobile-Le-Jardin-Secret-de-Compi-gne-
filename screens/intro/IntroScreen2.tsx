@@ -1,21 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet, ImageBackground, Alert, TouchableOpacity } from "react-native";
-import { useFonts, ArimaMadurai_400Regular } from '@expo-google-fonts/arima-madurai';
-import AppLoading from 'expo-app-loading';
+import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import styles, {assets} from '../../styles';
 
 export default function App({ navigation }) {
-	let [fontsLoaded] = useFonts({
-		ArimaMadurai_400Regular,
-  });
-  
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
+
 	return (
 		<View style={styles.container}>
 			<ImageBackground
-					  source={require('./assets/Asset_home_1.png')}
-					  style={{width : 265, height : 390, top : 20, Left : 55}}
+					  source={assets.home}
+					  style={{width : 265, height : 390, top : 20, left : 0}}
 					> 
 				<View
 					style={{
@@ -41,13 +34,3 @@ export default function App({ navigation }) {
 		</View>
 	  );
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#1E5F4B",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

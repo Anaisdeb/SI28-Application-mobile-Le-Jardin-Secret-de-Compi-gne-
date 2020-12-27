@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Button } from 'react-native';
-import { Camera } from 'expo-camera';
-import * as Location from 'expo-location';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AppLoading from 'expo-app-loading';
 
-import IntroScreen1 from './IntroScreen1';
-import IntroScreen2 from './IntroScreen2';
-import IntroScreen3 from './IntroScreen3';
-import IntroScreen4 from './IntroScreen4';
-import IntroScreen5 from './IntroScreen5';
-import IntroScreen6 from './IntroScreen6';
+import IntroScreen1 from './screens/intro/IntroScreen1';
+import IntroScreen2 from './screens/intro/IntroScreen2';
+import IntroScreen3 from './screens/intro/IntroScreen3';
+import IntroScreen4 from './screens/intro/IntroScreen4';
+import IntroScreen5 from './screens/intro/IntroScreen5';
+import IntroScreen6 from './screens/intro/IntroScreen6';
 import IntroScreen7 from './IntroScreen7';
 import IntroScreen8 from './IntroScreen8';
 import IntroScreen9 from './IntroScreen9';
@@ -44,62 +42,76 @@ import IntroScreen36 from './IntroScreen36';
 import IntroScreen37 from './IntroScreen37';
 import IntroScreen38 from './IntroScreen38';
 
+import { useFonts, ArimaMadurai_400Regular, ArimaMadurai_900Black} from '@expo-google-fonts/arima-madurai';
+import { Raleway_400Regular } from '@expo-google-fonts/raleway';
+
 const forFade = ({ current }) => ({
-  cardStyle: {
-    opacity: current.progress,
-  },
+	cardStyle: {
+		opacity: current.progress,
+	},
 });
 
 const Stack = createStackNavigator();
 
 export default function App() {
- return (
-    <NavigationContainer>
-      <Stack.Navigator
-	  screenOptions={{
-		  headerShown: false,
-		  cardStyleInterpolator: forFade,
-	   }}>
-		<Stack.Screen name="1" component={IntroScreen1} />
-		<Stack.Screen name="2" component={IntroScreen2} />
-		<Stack.Screen name="3" component={IntroScreen3} />
-		<Stack.Screen name="4" component={IntroScreen4} />
-		<Stack.Screen name="5" component={IntroScreen5} />
-		<Stack.Screen name="6" component={IntroScreen6} />
-		<Stack.Screen name="7" component={IntroScreen7} />
-		<Stack.Screen name="8" component={IntroScreen8} />
-		<Stack.Screen name="9" component={IntroScreen9} />
-		<Stack.Screen name="10" component={IntroScreen10} />
-		<Stack.Screen name="11" component={IntroScreen11} />
-		<Stack.Screen name="12" component={IntroScreen12} />
-		<Stack.Screen name="13" component={IntroScreen13} />
-		<Stack.Screen name="14" component={IntroScreen14} />
-		<Stack.Screen name="15" component={IntroScreen15} />
-		<Stack.Screen name="16" component={IntroScreen16} />
-		<Stack.Screen name="17" component={IntroScreen17} />
-		<Stack.Screen name="18" component={IntroScreen18} />
-		<Stack.Screen name="19" component={IntroScreen19} />
-		<Stack.Screen name="20" component={IntroScreen20} />
-		<Stack.Screen name="21" component={IntroScreen21} />
-		<Stack.Screen name="22" component={IntroScreen22} />
-		<Stack.Screen name="23" component={IntroScreen23} />
-		<Stack.Screen name="24" component={IntroScreen24} />
-		<Stack.Screen name="25" component={IntroScreen25} />
-		<Stack.Screen name="26" component={IntroScreen26} />
-		<Stack.Screen name="27" component={IntroScreen27} />
-		<Stack.Screen name="28" component={IntroScreen28} />
-		<Stack.Screen name="29" component={IntroScreen29} />
-		<Stack.Screen name="30" component={IntroScreen30} />
-		<Stack.Screen name="31" component={IntroScreen31} />
-		<Stack.Screen name="32" component={IntroScreen32} />
-		<Stack.Screen name="33" component={IntroScreen33} />
-		<Stack.Screen name="34" component={IntroScreen34} />
-		<Stack.Screen name="35" component={IntroScreen35} />
-		<Stack.Screen name="36" component={IntroScreen36} />
-		<Stack.Screen name="37" component={IntroScreen37} />
-		<Stack.Screen name="38" component={IntroScreen38} />
-		
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+	
+	let [fontsLoaded] = useFonts({
+		ArimaMadurai_400Regular,
+		ArimaMadurai_900Black,
+		Raleway_400Regular,
+  });
+	
+	if (!fontsLoaded) {
+		return <AppLoading />;
+	} else {
+		return (
+			<NavigationContainer>
+			<Stack.Navigator
+			screenOptions={{
+				headerShown: false,
+				cardStyleInterpolator: forFade,
+			}}>
+			<Stack.Screen name="1" component={IntroScreen1} />
+			<Stack.Screen name="2" component={IntroScreen2} />
+			<Stack.Screen name="3" component={IntroScreen3} />
+			<Stack.Screen name="4" component={IntroScreen4} />
+			<Stack.Screen name="5" component={IntroScreen5} />
+			<Stack.Screen name="6" component={IntroScreen6} />
+			<Stack.Screen name="7" component={IntroScreen7} />
+			<Stack.Screen name="8" component={IntroScreen8} />
+			<Stack.Screen name="9" component={IntroScreen9} />
+			<Stack.Screen name="10" component={IntroScreen10} />
+			<Stack.Screen name="11" component={IntroScreen11} />
+			<Stack.Screen name="12" component={IntroScreen12} />
+			<Stack.Screen name="13" component={IntroScreen13} />
+			<Stack.Screen name="14" component={IntroScreen14} />
+			<Stack.Screen name="15" component={IntroScreen15} />
+			<Stack.Screen name="16" component={IntroScreen16} />
+			<Stack.Screen name="17" component={IntroScreen17} />
+			<Stack.Screen name="18" component={IntroScreen18} />
+			<Stack.Screen name="19" component={IntroScreen19} />
+			<Stack.Screen name="20" component={IntroScreen20} />
+			<Stack.Screen name="21" component={IntroScreen21} />
+			<Stack.Screen name="22" component={IntroScreen22} />
+			<Stack.Screen name="23" component={IntroScreen23} />
+			<Stack.Screen name="24" component={IntroScreen24} />
+			<Stack.Screen name="25" component={IntroScreen25} />
+			<Stack.Screen name="26" component={IntroScreen26} />
+			<Stack.Screen name="27" component={IntroScreen27} />
+			<Stack.Screen name="28" component={IntroScreen28} />
+			<Stack.Screen name="29" component={IntroScreen29} />
+			<Stack.Screen name="30" component={IntroScreen30} />
+			<Stack.Screen name="31" component={IntroScreen31} />
+			<Stack.Screen name="32" component={IntroScreen32} />
+			<Stack.Screen name="33" component={IntroScreen33} />
+			<Stack.Screen name="34" component={IntroScreen34} />
+			<Stack.Screen name="35" component={IntroScreen35} />
+			<Stack.Screen name="36" component={IntroScreen36} />
+			<Stack.Screen name="37" component={IntroScreen37} />
+			<Stack.Screen name="38" component={IntroScreen38} />
+			
+			</Stack.Navigator>
+			</NavigationContainer>
+			);
+		}
+	}
