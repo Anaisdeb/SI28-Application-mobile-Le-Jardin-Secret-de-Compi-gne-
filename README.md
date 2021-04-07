@@ -27,4 +27,4 @@
 ## Site vitrine : https://projetsi28.wixsite.com/jardin-secret
 
 ## Trailer :
-[![Watch the video](Demonstration.png)](https://projetsi28.wixsite.com/jardin-secret)
+[![Watch the trailer](Site_vitrine.png)](https://projetsi28.wixsite.com/jardin-secret)
