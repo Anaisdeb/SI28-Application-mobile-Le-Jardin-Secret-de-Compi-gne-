@@ -5,10 +5,10 @@
 
 ## Composition de l'équipe de projet
 
-  * Anaïs Débureaux
   * Guillaume Brocart
   * Eléonore Sas
   * Jean-Yves Sinnas
+  * Anaïs Débureaux
   
 ## Contenu du répertoire
   
